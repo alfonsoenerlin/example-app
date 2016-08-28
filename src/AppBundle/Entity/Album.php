@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use Acme\ReusableBundle\Model\AbstractPurchasable;
+use Acme\ReusableBundle\Entity\AbstractPurchasable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

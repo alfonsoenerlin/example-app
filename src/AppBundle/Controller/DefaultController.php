@@ -18,6 +18,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+//        dump($this->container->getParameter('acme_reusable.abstract_cart_line.class'));
+
+        dump($this->container->getParameter('acme_reusable.cart_line.class'));
+        dump($this->container->getParameter('acme_reusable.cart.class'));
+
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),

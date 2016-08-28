@@ -40,9 +40,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        path:  "%database_path%"
-        driver: pdo_sqlite
-#        driver:   pdo_mysql
+        driver:   pdo_mysql
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
@@ -59,7 +57,7 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: false
+        auto_mapping: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -72,27 +70,26 @@ swiftmailer:
 knp_doctrine_behaviors:
     sluggable:      true
 
-easy_admin:
-    site_name: 'ACME Megacorp.'
-    entities:
-        Ticket:
-            class: AppBundle\Entity\Ticket
-        Album:
-            class: AppBundle\Entity\Album
-            form:
-                fields:
-                    - title
-                    - sku
-                    - price
-                    - slug
-                    - { property: 'songs', type_options: { by_reference: false } }
-
-        Song:
-           class: AppBundle\Entity\Song
+#easy_admin:
+#    site_name: 'ACME Megacorp.'
+#    entities:
+#        Ticket:
+#            class: AppBundle\Entity\Ticket
+#        Album:
+#            class: AppBundle\Entity\Album
+#            form:
+#                fields:
+#                    - title
+#                    - sku
+#                    - price
+#                    - slug
+#                    - { property: 'songs', type_options: { by_reference: false } }
+#
+#        Song:
+#           class: AppBundle\Entity\Song
 
 acme_reusable:
     class:
-        cart: AppBundle\Entity\Cart
         cart_line: AppBundle\Entity\CartLine
         purchasable_mapping:
             ticket: { key: TICKET, class: AppBundle\Entity\Ticket }
