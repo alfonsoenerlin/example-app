@@ -1,0 +1,35 @@
+{% extends 'WAMEcommerceBundle::layout.html.twig' %}
+
+{% block ecommerce_content %}
+    <section id="product">
+        <div class="container">
+
+            <h1>Cart checkout</h1>
+
+            <ul>
+
+            {% for ci in cart.cartLines %}
+                <li class="cart-line-item">
+                    {{ ci.purchasable.sku }} - {{ ci.amount }}
+                </li>
+            {% endfor %}
+            </ul>
+            <div class="cart-total">{{ cart.purchasableAmount }}</div>
+
+
+            <h4>Añade productos a tu experiencia</h4>
+            {% for product in products %}
+                <div>
+                    <ul class="product-item">
+                        <li>{{ product.title }}</li>
+                        <li>{{ product.price }}</li>
+                        <li><a href="{{ path('wam_ecommerce_store_add_to_cart', {id: product.id}) }}">{{ 'add_to_cart' | trans() }}</a></li>
+                    </ul>
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </section>
+
+{% endblock ecommerce_content %}

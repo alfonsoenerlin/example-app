@@ -1,0 +1,26 @@
+{% extends 'WAMEcommerceBundle::layout.html.twig' %}
+
+
+
+{% block ecommerce_content %}
+    <section id="product">
+        <div class="container">
+
+            {% for product in products %}
+                <div>
+                    <ul class="product-item">
+                        <li><a href="{{ url(product) }}" class="product-anchor">{{ product.title }}</a></li>
+                        <li>{{ product.sku }}</li>
+                        <li>{{ product.description }}</li>
+                        <li>{{ product.price }}</li>
+                        <li>{% media product.media, 'reference' %}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+
+
+{% endblock ecommerce_content %}

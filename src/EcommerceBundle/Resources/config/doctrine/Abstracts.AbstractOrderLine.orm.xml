@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="EcommerceBundle\Entity\Abstracts\AbstractOrderLine"
+                       repository-class="EcommerceBundle\Repository\OrderLineRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="quantity" column="quantity" type="integer" nullable="false" />
+        <field name="purchasableAmount" column="purchasable_amount" type="decimal" precision="6" scale="2"/>
+
+        <many-to-one target-entity="EcommerceBundle\Entity\Abstracts\AbstractPurchasable" field="purchasable">
+            <cascade><cascade-persist/></cascade>
+        </many-to-one>
+        <many-to-one target-entity="EcommerceBundle\Model\Interfaces\OrderInterface" inversed-by="orderLines" field="order" />
+    </mapped-superclass>
+
+</doctrine-mapping>

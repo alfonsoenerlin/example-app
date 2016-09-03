@@ -1,0 +1,9 @@
+ecommerce:
+    label:
+        address:
+            name: Name
+            nif: TAX Id
+            address_line_1: Address Line 1
+            address_line_2: Address Line 2
+            phone: Phone
+            save: Next

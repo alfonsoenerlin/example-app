@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="EcommerceBundle\Entity\Abstracts\AbstractAddressBillable"
+                       repository-class="EcommerceBundle\Repository\AddressBillableRepository">
+
+        <field name="addressLine1" column="address_line_1" type="string" length="127" nullable="true"/>
+        <field name="addressLine2" column="address_line_2" type="string" length="127" nullable="true"/>
+        <field name="name" column="name" type="string" length="64" nullable="false"/>
+        <field name="nif" column="nif" type="string" length="32" nullable="false"/>
+        <field name="phone" column="phone" type="string" length="16" nullable="false"/>
+
+    </mapped-superclass>
+
+</doctrine-mapping>

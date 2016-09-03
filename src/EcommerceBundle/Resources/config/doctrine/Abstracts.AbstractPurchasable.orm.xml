@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="EcommerceBundle\Entity\Abstracts\AbstractPurchasable"
+            table="wam_ecommerce_purchasable"
+            inheritance-type="SINGLE_TABLE">
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+
+        <field name="sku" column="sku" type="string" length="255" nullable="false" />
+
+        <field name="price" type="float" nullable="false" />
+
+        <field name="dateStart" column="date_start" type="datetime" nullable="true" />
+        <field name="dateEnd" column="date_end" type="datetime" nullable="true" />
+        <field name="status" column="status" type="string" length="50" nullable="false" />
+
+
+        <discriminator-column name="purchasable_type" type="string" />
+        <discriminator-map>
+        </discriminator-map>
+
+    </entity>
+
+</doctrine-mapping>

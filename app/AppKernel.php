@@ -20,6 +20,10 @@ class AppKernel extends Kernel
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new Acme\ReusableBundle\AcmeReusableBundle(),
 
+//            new EcommerceBundle\WAMEcommerceBundle(),
+//            new Mmoreram\ControllerExtraBundle\ControllerExtraBundle(),
+//            new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
+
             new AppBundle\AppBundle(),
         ];
 

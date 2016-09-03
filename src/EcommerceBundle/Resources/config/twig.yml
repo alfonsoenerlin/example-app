@@ -1,0 +1,7 @@
+services:
+    app.twig_extension:
+        class: EcommerceBundle\Twig\Extension\CartExtension
+        arguments:
+            - '@wam_ecommerce.wrapper.cart'
+        tags:
+            - { name: twig.extension }

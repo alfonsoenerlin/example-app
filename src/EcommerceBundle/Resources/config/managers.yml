@@ -1,0 +1,74 @@
+services:
+
+    wam_ecommerce.product.manager:
+        class: '%wam.ecommerce.manager.product%'
+        arguments: ['%wam.ecommerce.class.product%', '@doctrine']
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+
+    wam_ecommerce.cart.manager:
+        class: '%wam.ecommerce.manager.cart%'
+        arguments:
+            - '%wam.ecommerce.class.cart%'
+            - '@doctrine'
+            - '@wam_ecommerce.cart_line.manager'
+            - '@wam_ecommerce.event_dispatcher.cart'
+            - '@wam_ecommerce.event_dispatcher.cart_line'
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+
+    wam_ecommerce.address.manager:
+        class: '%wam.ecommerce.manager.address_billable%'
+        arguments:
+            - '%wam.ecommerce.class.address_billable%'
+            - '@doctrine'
+
+    wam_ecommerce.cart_line.manager:
+        class: '%wam.ecommerce.manager.cart_line%'
+        arguments: ['%wam.ecommerce.class.cart_line%', '@doctrine']
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+
+    wam_ecommerce.order.manager:
+        class: '%wam.ecommerce.manager.order%'
+        arguments:
+            - '%wam.ecommerce.class.order%'
+            - '@doctrine'
+            - '@wam_ecommerce.order_line.manager'
+            - '@wam_ecommerce.event_dispatcher.order'
+            - '@wam_ecommerce.event_dispatcher.order_line'
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+            - [setSmFactory, ['@sm.factory']]
+
+    wam_ecommerce.order_line.manager:
+        class: '%wam.ecommerce.manager.order_line%'
+        arguments: ['%wam.ecommerce.class.order_line%', '@doctrine']
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+
+    wam_ecommerce.address_billable.manager:
+        class: '%wam.ecommerce.manager.address_billable%'
+        arguments: ['%wam.ecommerce.class.address_billable%', '@doctrine']
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+
+    wam_ecommerce.customer.manager:
+        class: '%wam.ecommerce.manager.customer%'
+        arguments: ['%wam.ecommerce.class.customer%', '@doctrine']
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+
+    wam_ecommerce.session_manager.cart:
+        class: EcommerceBundle\Manager\CartSessionManager
+        arguments:
+            - '@session'
+            - '%wam.cart_session_field_name%'
+            - '%wam.cart_save_in_session%'
+
+
+    wam_ecommerce.payment.manager:
+        class: EcommerceBundle\Manager\PaymentManager
+        arguments: [ EcommerceBundle\Entity\Payment, '@doctrine']
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]

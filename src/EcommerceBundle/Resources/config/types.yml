@@ -1,0 +1,6 @@
+services:
+
+    wam.ecommerce.types.addressbillable:
+        class: EcommerceBundle\Form\Type\AddressBillableType
+        tags:
+            - { name: form.type, alias: wam_ecommerce_addressbillable }

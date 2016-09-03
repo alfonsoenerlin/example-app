@@ -1,0 +1,9 @@
+ecommerce:
+    label:
+        address:
+            name: Nombre / Razón Social
+            nif: DNI / CIF
+            address_line_1: Domicilio línea 1
+            address_line_2: Domicilio línea 2
+            phone: Teléfono
+            save: Siguiente

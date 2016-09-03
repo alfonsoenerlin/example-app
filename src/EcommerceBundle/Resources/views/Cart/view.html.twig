@@ -1,0 +1,29 @@
+{% extends 'WAMEcommerceBundle::layout.html.twig' %}
+
+{% block ecommerce_content %}
+    <section id="product">
+        <div class="container">
+
+            <h1>Cart</h1>
+
+            {% if cart.cartLines | length %}
+                <ul>
+                    {% for ci in cart.cartLines %}
+                        <li class="cart-line-item">
+                            {{ ci.quantity }}x {{ ci.purchasable.sku }} - {{ ci.amount }} - <a
+                                    href="{{ path('wam_ecommerce_store_cartline_remove', {id: ci.id}) }}"
+                                    class="remove-cart-line">{{ 'remove_from_cart' | trans() }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ path('wam_ecommerce_store_cart_empty') }}" class="cart-empty">{{ 'empty_cart' | trans() }}</a>
+            {% else %}
+                <p>{{ 'cart_is_empty' | trans() }}</p>
+            {% endif %}
+            <div class="cart-total">{{ cart.purchasableAmount }}</div>
+
+            <a href="{{ path('wam_ecommerce_store_checkout_address') }}" class="go-to-checkout">{{ 'checkout' | trans()}}</a>
+        </div>
+    </section>
+
+{% endblock ecommerce_content %}

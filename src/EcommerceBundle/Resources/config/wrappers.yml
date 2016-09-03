@@ -1,0 +1,26 @@
+services:
+
+    wam_ecommerce.wrapper.cart:
+        class: EcommerceBundle\Wrapper\CartWrapper
+        arguments:
+            - '@wam_ecommerce.event_dispatcher.cart'
+            - '@wam_ecommerce.cart.manager'
+            - '@wam_ecommerce.wrapper.cart_session'
+            - '@wam_ecommerce.wrapper.customer'
+
+    wam_ecommerce.wrapper.cart_session:
+        class: EcommerceBundle\Wrapper\CartSessionWrapper
+        arguments:
+            - '@wam_ecommerce.session_manager.cart'
+            - '@wam_ecommerce.cart.manager'
+
+    wam_ecommerce.wrapper.customer:
+        class: EcommerceBundle\Wrapper\CustomerWrapper
+        arguments:
+            - '@wam_ecommerce.customer.manager'
+            - '@?security.token_storage'
+
+    wam_ecommerce.wrapper.payment_methods:
+        class: EcommerceBundle\Wrapper\PaymentWrapper
+        arguments:
+            - '@wam_ecommerce.event_dispatcher.payment'

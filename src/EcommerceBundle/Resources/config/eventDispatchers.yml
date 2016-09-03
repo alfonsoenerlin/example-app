@@ -1,0 +1,30 @@
+services:
+
+    #
+    # EventDispatchers
+    #
+
+    wam_ecommerce.event_dispatcher.abstract:
+        abstract: true
+        arguments:
+            - '@event_dispatcher'
+
+    wam_ecommerce.event_dispatcher.cart:
+        class: EcommerceBundle\EventDispatcher\CartEventDispatcher
+        parent: wam_ecommerce.event_dispatcher.abstract
+
+    wam_ecommerce.event_dispatcher.cart_line:
+        class: EcommerceBundle\EventDispatcher\CartLineEventDispatcher
+        parent: wam_ecommerce.event_dispatcher.abstract
+
+    wam_ecommerce.event_dispatcher.order:
+        class: EcommerceBundle\EventDispatcher\OrderEventDispatcher
+        parent: wam_ecommerce.event_dispatcher.abstract
+
+    wam_ecommerce.event_dispatcher.order_line:
+        class: EcommerceBundle\EventDispatcher\OrderLineEventDispatcher
+        parent: wam_ecommerce.event_dispatcher.abstract
+
+    wam_ecommerce.event_dispatcher.payment:
+        class: EcommerceBundle\EventDispatcher\PaymentEventDispatcher
+        parent: wam_ecommerce.event_dispatcher.abstract

@@ -1,0 +1,16 @@
+services:
+    #
+    # Providers
+    #
+    wam_ecommerce.container_parameters:
+        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+        factory:
+            - '@service_container'
+            - getParameterBag
+
+
+    wam_ecommerce.provider.manager:
+        class:  EcommerceBundle\Services\ManagerProvider
+        arguments:
+            - '@doctrine'
+            - '@wam_ecommerce.container_parameters'

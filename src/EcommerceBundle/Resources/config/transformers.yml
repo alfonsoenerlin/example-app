@@ -1,0 +1,17 @@
+services:
+
+    #
+    # Transformers
+    #
+    wam_ecommerce.transformer.cart_order:
+        class: EcommerceBundle\Transformer\CartOrderTransformer
+        arguments:
+            - '@wam_ecommerce.event_dispatcher.order'
+            - '@wam_ecommerce.transformer.cart_line_order_line'
+            - '@wam_ecommerce.order.manager'
+
+    wam_ecommerce.transformer.cart_line_order_line:
+        class: EcommerceBundle\Transformer\CartLineOrderLineTransformer
+        arguments:
+            - '@wam_ecommerce.event_dispatcher.order_line'
+            - '@wam_ecommerce.order_line.manager'

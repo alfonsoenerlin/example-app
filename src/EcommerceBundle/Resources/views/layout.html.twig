@@ -1,0 +1,22 @@
+{% extends '::layout.html.twig' %}
+{#{% block body %}#}
+
+    {#{% block stylesheets %}#}
+        {#<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>#}
+    {#{% endblock %}#}
+
+    {% block content %}
+        <div class="module-banner-center header">
+            <div class="content-text-center">
+            </div>
+        </div>
+
+        {% block ecommerce_content %}
+        {% endblock ecommerce_content %}
+        {% block cartBlock %}
+            <hr />
+            {{ wam_ecommerce_shoping_cart() }}
+            <a href="{{ path('wam_ecommerce_store_cart_view') }}" class="view-cart">View Cart</a>
+        {% endblock cartBlock %}
+    {% endblock content %}
+{#{% endblock body %}#}

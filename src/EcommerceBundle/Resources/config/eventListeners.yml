@@ -1,0 +1,82 @@
+services:
+
+    #
+    # Event Listeners
+    #
+
+    wam_ecommerce.event_listener.cart_load:
+        class: EcommerceBundle\EventListener\CartLoadEventListener
+        arguments:
+            - '@wam_ecommerce.object_manager.cart'
+            - '@wam_ecommerce.event_dispatcher.cart'
+            - '@wam_ecommerce.cart.manager'
+
+        tags:
+            - { name: kernel.event_listener, event: cart.preload, method: checkCartIntegrity, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartPrices, priority: 16 }
+            - { name: kernel.event_listener, event: cart.onload, method: saveCart, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartQuantities, priority: 16 }
+
+    wam_ecommerce.event_listener.cart_session:
+        class: EcommerceBundle\EventListener\CartSessionEventListener
+        arguments:
+            - '@wam_ecommerce.session_manager.cart'
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: saveCartInSession, priority: -2 }
+
+    wam_ecommerce.event_listener.update_cart_with_user:
+        class: EcommerceBundle\EventListener\UpdateCartWithUserListener
+        arguments:
+            - '@wam_ecommerce.wrapper.cart'
+            - '@wam_ecommerce.object_manager.cart'
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.success, method: onAuthenticationSuccess  }
+
+    wam_ecommerce.event_listener.order_creation:
+        class: EcommerceBundle\EventListener\OrderCreationEventListener
+        arguments:
+            - '@wam_ecommerce.object_manager.order'
+            - '@wam_ecommerce.object_manager.cart'
+        tags:
+            - { name: kernel.event_listener, event: order.oncreated, method: saveOrder, priority: 0}
+            - { name: kernel.event_listener, event: order.oncreated, method: setOrderToCart, priority: -16}
+
+# TODO: Disable create users
+#    wam_ecommerce.event_listener.create_customer:
+#        class:  EcommerceBundle\EventListener\CreateCustomerEventListener
+#        arguments:
+#            order_object_manager: '@wam_ecommerce.object_manager.order'
+#            customer_manager: '@wam_ecommerce.customer.manager'
+#            user_manager: '@sonata.user.orm.user_manager'
+#            token_storage: '@security.token_storage'
+#            mailer: '@wam.core.mailer'
+#            template: '%wam.ecommerce.mailing.template.new_customer%'
+#            senderAddress: '%wam.ecommerce.mailing.from%'
+#        tags:
+#            - { name: kernel.event_listener, event: payment.order.success, method: createCustomer }
+
+    wam_ecommerce.event_listener.order_to_paid:
+        class:  EcommerceBundle\EventListener\OrderToPaidEventListener
+        arguments:
+            order_object_manager: '@wam_ecommerce.object_manager.order'
+            state_machine_factory: '@sm.factory'
+            cart_session_manager: '@wam_ecommerce.session_manager.cart'
+
+        tags:
+            - { name: kernel.event_listener, event: payment.order.success, method: setOrderToPaid }
+
+    wam_ecommerce.event_listener.order_to_refunded:
+            class:  EcommerceBundle\EventListener\OrderToRefundedEventListener
+            arguments:
+                order_object_manager: '@wam_ecommerce.object_manager.order'
+                state_machine_factory: '@sm.factory'
+            tags:
+                - { name: kernel.event_listener, event: payment.order.refunded, method: setOrderToRefunded }
+
+    wam_ecommerce.event_listener.save_payment:
+        class:  EcommerceBundle\EventListener\OrderPaymentEventListener
+        arguments:
+            payment_manager: '@wam_ecommerce.object_manager.order'
+            order_manager: '@wam_ecommerce.payment.manager'
+        tags:
+            - { name: kernel.event_listener, event: order.payment.details.created, method: setPaymentToOrder }

@@ -1,0 +1,80 @@
+services:
+
+    sonata.admin.wamecommercebundle.product:
+        class: '%wam.ecommerce.admin.product.class%'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "wam_ecommerce.admin.group", label: "wam_ecommerce.admin.label.product", label_translator_strategy: "sonata.admin.label.strategy.underscore", show_in_dashboard: true }
+        arguments:
+            - ~
+            - '%wam.ecommerce.class.product%'
+            - '%wam.ecommerce.admin.product.controller%'
+        calls:
+            - [ setTranslationDomain, ['%wam.ecommerce.admin.product.translation%']]
+
+    sonata.admin.wamecommercebundle.address_billable:
+        class: '%wam.ecommerce.admin.address_billable.class%'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "wam_ecommerce.admin.group", label: "wam_ecommerce.admin.label.address_billable", label_translator_strategy: "sonata.admin.label.strategy.underscore", show_in_dashboard: true }
+        arguments:
+            - ~
+            - '%wam.ecommerce.class.address_billable%'
+            - '%wam.ecommerce.admin.address_billable.controller%'
+        calls:
+            - [ setTranslationDomain, ['%wam.ecommerce.admin.address_billable.translation%']]
+
+    sonata.admin.wamecommercebundle.cart:
+        class: '%wam.ecommerce.admin.cart.class%'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "wam_ecommerce.admin.group", label: "wam_ecommerce.admin.label.cart", label_translator_strategy: "sonata.admin.label.strategy.underscore", show_in_dashboard: true }
+        arguments:
+            - ~
+            - '%wam.ecommerce.class.cart%'
+            - '%wam.ecommerce.admin.cart.controller%'
+        calls:
+            - [ setTranslationDomain, ['%wam.ecommerce.admin.cart.translation%']]
+            - [ setDispatcher, [ '@wam_ecommerce.event_dispatcher.cart' ]]
+
+    sonata.admin.wamecommercebundle.cart_line:
+        class: '%wam.ecommerce.admin.cart_line.class%'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "wam_ecommerce.admin.group", label: "wam_ecommerce.admin.label.cart_line", label_translator_strategy: "sonata.admin.label.strategy.underscore", show_in_dashboard: false }
+        arguments:
+            - ~
+            - '%wam.ecommerce.class.cart_line%'
+            - '%wam.ecommerce.admin.cart_line.controller%'
+        calls:
+            - [ setTranslationDomain, ['%wam.ecommerce.admin.cart_line.translation%']]
+
+
+    sonata.admin.wamecommercebundle.order:
+        class: '%wam.ecommerce.admin.order.class%'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "wam_ecommerce.admin.group", label: "wam_ecommerce.admin.label.order", label_translator_strategy: "sonata.admin.label.strategy.underscore", show_in_dashboard: true }
+        arguments:
+            - ~
+            - '%wam.ecommerce.class.order%'
+            - '%wam.ecommerce.admin.order.controller%'
+        calls:
+            - [ setTranslationDomain, ['%wam.ecommerce.admin.order.translation%']]
+
+    sonata.admin.wamecommercebundle.order_line:
+        class: '%wam.ecommerce.admin.order_line.class%'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "wam_ecommerce.admin.group", label: "wam_ecommerce.admin.label.order_line", label_translator_strategy: "sonata.admin.label.strategy.underscore", show_in_dashboard: false }
+        arguments:
+            - ~
+            - '%wam.ecommerce.class.order_line%'
+            - '%wam.ecommerce.admin.order_line.controller%'
+        calls:
+            - [ setTranslationDomain, ['%wam.ecommerce.admin.order_line.translation%']]
+
+    sonata.admin.wamecommercebundle.payment:
+        class: '%wam.ecommerce.admin.payment.class%'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "wam_ecommerce.admin.group", label: "wam_ecommerce.admin.label.payment", label_translator_strategy: "sonata.admin.label.strategy.underscore", show_in_dashboard: false }
+        arguments:
+            - ~
+            - 'EcommerceBundle\Entity\Payment'
+            - '%wam.ecommerce.admin.payment.controller%'
+        calls:
+            - [ setTranslationDomain, ["SonataAdminBundle"]]

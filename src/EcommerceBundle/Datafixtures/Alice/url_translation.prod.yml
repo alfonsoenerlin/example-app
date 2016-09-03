@@ -1,0 +1,43 @@
+WAM\Bundle\RoutingBundle\Entity\UrlTranslation:
+    order: 15
+    context: [ecommerce, ecommerce_url]
+
+    wam_ecommerce_store_list_translation_es:
+        locale: es
+        path: /tienda/productos/listar
+
+    wam_ecommerce_store_list_translation_en:
+        locale: en
+        path: /store/product/list
+
+    wam_ecommerce_store_cart_checkout_translation_es:
+        locale: es
+        path: /carro/checkout
+
+    wam_ecommerce_store_cart_checkout_translation_en:
+        locale: en
+        path: /cart/checkout
+
+    wam_ecommerce_store_cart_view_translation_es:
+        locale: es
+        path: /carro/ver
+
+    wam_ecommerce_store_cart_view_translation_en:
+        locale: en
+        path: /cart/view
+
+    wam_ecommerce_store_checkout_address_translation_es:
+        locale: es
+        path: /ckeckout/domicilio
+
+    wam_ecommerce_store_checkout_address_translation_en:
+        locale: en
+        path: /ckeckout/address
+
+    wam_ecommerce_store_checkout_payment_translation_es:
+        locale: es
+        path: /ckeckout/pago
+
+    wam_ecommerce_store_checkout_payment_translation_en:
+        locale: en
+        path: /ckeckout/payment

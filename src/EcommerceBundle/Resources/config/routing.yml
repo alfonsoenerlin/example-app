@@ -1,0 +1,28 @@
+
+wam_ecommerce_store_add_to_cart:
+    path:     /product/{id}/add
+    defaults: { _controller: WAMEcommerceBundle:Cart:addProduct }
+    requirements:
+        id: \d+
+
+wam_ecommerce_store_cartline_remove:
+    path:     /line/{id}/delete
+    defaults: { _controller: WAMEcommerceBundle:Cart:removeCartLine}
+    requirements:
+        id: \d+
+
+wam_ecommerce_store_order_thanks:
+    path:     /order/{id}/thanks
+    defaults: { _controller: WAMEcommerceBundle:Order:thanks}
+    requirements:
+        id: \d+
+
+wam_ecommerce_store_checkout_payment_fail:
+    path:     /ckeckout/payment/fail/order/{id}
+    defaults: { _controller: WAMEcommerceBundle:Checkout:paymentFail}
+    requirements:
+        id: \d+
+
+wam_ecommerce_store_cart_empty:
+    path:     /cart/empty
+    defaults: { _controller: WAMEcommerceBundle:Cart:emptyCart}

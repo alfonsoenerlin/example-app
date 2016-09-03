@@ -1,0 +1,46 @@
+services:
+    #
+    # Object Managers
+    #
+
+    wam_ecommerce.abstract_manager:
+        class: Doctrine\Common\Persistence\ObjectManager
+        factory:
+            - '@wam_ecommerce.provider.manager'
+            - getManagerByEntityNamespace
+        abstract: true
+
+    wam_ecommerce.object_manager.cart:
+        parent: wam_ecommerce.abstract_manager
+        arguments:
+            - '%wam.ecommerce.class.cart%'
+
+    wam_ecommerce.object_manager.cart_line:
+        parent: wam_ecommerce.abstract_manager
+        arguments:
+            - '%wam.ecommerce.class.cart_line%'
+
+    wam_ecommerce.object_manager.address_billable:
+        parent: wam_ecommerce.abstract_manager
+        arguments:
+            - '%wam.ecommerce.class.address_billable%'
+
+    wam_ecommerce.object_manager.order:
+        parent: wam_ecommerce.abstract_manager
+        arguments:
+            - '%wam.ecommerce.class.order%'
+
+    wam_ecommerce.object_manager.order_line:
+        parent: wam_ecommerce.abstract_manager
+        arguments:
+            - '%wam.ecommerce.class.order_line%'
+
+    wam_ecommerce.object_manager.customer:
+        parent: wam_ecommerce.abstract_manager
+        arguments:
+            - '%wam.ecommerce.class.customer%'
+
+    wam_ecommerce.object_manager.payment:
+        parent: wam_ecommerce.abstract_manager
+        arguments:
+            - EcommerceBundle\Entity\Payment

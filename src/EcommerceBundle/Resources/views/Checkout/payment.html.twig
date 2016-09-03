@@ -1,0 +1,34 @@
+{% extends 'WAMEcommerceBundle::layout.html.twig' %}
+
+{% block ecommerce_content %}
+    <section id="payment">
+        <div class="container">
+
+            {% block content_checkout %}
+                <div class="checkout">
+
+                    <div class="form-checkout">
+                        {% for paymentMethod in paymentMethods %}
+                            {% set paymentMethodName = paymentMethod.name %}
+                            <div class="form form-{{ paymentMethodName|trans|lower }}">
+                            {% if paymentMethod.url %}
+                                <h2>{{ paymentMethodName|trans }}</h2>
+                                <p><a href="{{ paymentMethod.url }}" class="button button-secondary test-payment-{{ paymentMethod.id }}">{{ 'template.store_template_bundle.checkout.payment.continue'|trans }}</a></p>
+                                <hr />
+                            {% else %}
+                                    <summary>{{ paymentMethodName|trans }}</summary>
+                                    <div class="payment-wrapper">
+                                        {{ paymentMethod.script|raw }}
+                                    </div>
+                            {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            {% endblock content_checkout %}
+
+        </div>
+    </section>
+
+{% endblock ecommerce_content %}

@@ -1,0 +1,21 @@
+{% extends 'WAMEcommerceBundle::layout.html.twig' %}
+
+{% block ecommerce_content %}
+    <section id="product">
+        <div class="container">
+
+            <h1>{{ product.title }}</h1>
+            <dl>
+                <dt class="sku">{{ product.sku }}</dt>
+                <dt class="description">{{ product.description }}</dt>
+                <dt class="price">{{ product.price }}</dt>
+                <dt>{% media product.media, 'reference' %}</dt>
+            </dl>
+
+            <a href="{{ url('wam_ecommerce_store_add_to_cart', { id: product.id }) }}" class="add-to-cart">{{ 'add_to_cart' | trans }}</a>
+
+
+        </div>
+    </section>
+
+{% endblock ecommerce_content %}

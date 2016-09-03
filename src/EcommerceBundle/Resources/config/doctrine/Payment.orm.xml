@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="EcommerceBundle\Entity\Payment"
+            repository-class="EcommerceBundle\Repository\PaymentRepository"
+            table="wam_ecommerce_payment">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="methodName" column="method_name" type="string"/>
+        <field name="resultData" column="result_data" type="json_array"/>
+
+        <field name="createdAt" column="created_at" type="datetime" nullable="true"/>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true"/>
+        <field name="status" column="status" type="string" nullable="false"/>
+
+        <many-to-one target-entity="EcommerceBundle\Model\Interfaces\OrderInterface" field="order"
+                     inversed-by="payments">
+            <join-column name="order_id" referenced-column-name="id"/>
+        </many-to-one>
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="preUpdate" method="loadUpdateAt"/>
+            <lifecycle-callback type="prePersist" method="loadUpdateAt"/>
+        </lifecycle-callbacks>
+    </entity>
+
+</doctrine-mapping>

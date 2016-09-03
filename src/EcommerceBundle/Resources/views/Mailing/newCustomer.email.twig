@@ -1,0 +1,18 @@
+{% block body_html %}
+    <p>Tu nueva cuenta de usuario ha sido creada</p>
+    <dl>
+        <dt>username</dt>
+        <dt>{{ user.username }}</dt>
+        <dt>email</dt>
+        <dt>{{ user.email }}</dt>
+    </dl>
+{% endblock body_html %}
+
+{% block body_text %}
+
+    Tu nueva cuenta de usuario ha sido creada
+
+    username: {{ user.username }}
+    email: {{ user.email }}
+
+{% endblock body_text %}

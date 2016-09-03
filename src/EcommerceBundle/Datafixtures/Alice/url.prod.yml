@@ -1,0 +1,29 @@
+WAM\Bundle\RoutingBundle\Entity\Url:
+    order: 20
+    context: [ecommerce, ecommerce_url]
+
+    wam_ecommerce_store_list:
+        name: wam_ecommerce_store_list
+        controller: WAMEcommerceBundle:Product:list
+        setTranslations: [2x @wam_ecommerce_store_list_translation_*]
+
+    wam_ecommerce_store_cart_checkout:
+        name: wam_ecommerce_store_cart_checkout
+        path:     /cart/checkout
+        controller: WAMEcommerceBundle:Cart:checkout
+        setTranslations: [2x @wam_ecommerce_store_cart_checkout_translation_*]
+
+    wam_ecommerce_store_cart_view:
+        name: wam_ecommerce_store_cart_view
+        controller: WAMEcommerceBundle:Cart:view
+        setTranslations: [2x @wam_ecommerce_store_cart_view_translation_*]
+
+    wam_ecommerce_store_checkout_address:
+        name: wam_ecommerce_store_checkout_address
+        controller: WAMEcommerceBundle:Checkout:address
+        setTranslations: [2x @wam_ecommerce_store_checkout_address_translation_*]
+
+    wam_ecommerce_store_checkout_payment:
+        name: wam_ecommerce_store_checkout_payment
+        controller: WAMEcommerceBundle:Checkout:payment
+        setTranslations: [2x @wam_ecommerce_store_checkout_payment_translation_*]

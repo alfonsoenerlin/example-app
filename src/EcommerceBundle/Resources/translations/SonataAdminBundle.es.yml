@@ -1,0 +1,48 @@
+wam_ecommerce:
+    admin:
+        group: Ecommerce
+        label:
+            product: Product
+            cart: Cart
+            cart_line: Cart Line
+            order: Order
+            order_line: Order Line
+            payment: Payment
+
+form:
+    label_title: Title
+
+list:
+    label_customer: Customer
+    label__action: Actions
+    label_quantity: Cantidad
+    label_purchasable_amount: Purchasable Amount
+    label_amount: Amount
+    label_method_name: Method
+    label_status: Status
+    label_order: Order
+    label_order_amount: Amount
+    label_order_billing_address_name: Name
+    label_title: Título
+
+show:
+    label_customer: Customer
+    label_cart: Cart
+    label_purchasable_amount: Amount
+    label_quantity: Quantity
+    label_created_at: Created At
+    label_status: Status
+    label_payments: Payments
+    label_order_lines: Items
+    label_cart_lines: Items
+    label_is_ordered: Is Ordered
+
+breadcrumb:
+    link_order_list: Orders
+    link_cart_list: Carts
+    link_payment_list: Payments
+    link_product_list: Productos
+
+roomtype:
+    data: Datos Básicos
+    equipment_and_data: Equipamiento
